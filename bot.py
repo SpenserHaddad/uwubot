@@ -29,15 +29,16 @@ if __name__ == "__main__":
     parser.add_argument(
         "token",
         type=str,
+        nargs="?",
         default=env_token,
         help="Discord token. Defaults to UWUBOT_DISCORD_TOKEN envvar",
     )
 
     args = parser.parse_args()
-    if bot_token := args.token is None:
+    if args.token is None:
         raise ValueError(
             "Please supply a Discord token as either an arg or "
             / "the UWUBOT_DISCORD_TOKEN envvar"
         )
 
-    bot.run(bot_token)
+    bot.run(args.token)
