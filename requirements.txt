@@ -1,0 +1,2 @@
+git+https://github.com/SpenserHaddad/uwufierpy.git
+discord.py
