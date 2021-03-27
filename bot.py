@@ -15,9 +15,8 @@ async def on_ready():
 
 
 @bot.command(name="uwu")
-async def uwufy_message(ctx, *args):
-    message = " ".join(args)
-    uwufy_message = uwufy(message)
+async def uwufy_message(ctx: commands.Context):
+    uwufy_message = uwufy(ctx.message.content)
     await ctx.send(uwufy_message)
 
 
