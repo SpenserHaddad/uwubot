@@ -17,7 +17,7 @@ async def on_ready():
 @bot.command(name="uwu")
 async def uwufy_message(ctx: commands.Context):
     uwufy_message = uwufy(ctx.message.content)
-    await ctx.send(uwufy_message)
+    await ctx.reply(uwufy_message)
 
 
 if __name__ == "__main__":
