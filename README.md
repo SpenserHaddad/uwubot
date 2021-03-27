@@ -1,0 +1,2 @@
+# uwubot
+Uwufier Discord bot
