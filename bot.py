@@ -16,7 +16,8 @@ async def on_ready():
 
 @bot.command(name="uwu")
 async def uwufy_message(ctx: commands.Context):
-    uwufy_message = uwufy(ctx.message.content)
+    message = ctx.message.content.replace("!uwu ", "", 1)
+    uwufy_message = uwufy(message)
     await ctx.reply(uwufy_message)
 
 
