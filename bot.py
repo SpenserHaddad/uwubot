@@ -1,5 +1,5 @@
 import logging
-from discord import Message
+from discord import Colour, Embed, Message
 from discord.ext import commands
 from uwufier import uwufy
 
@@ -14,6 +14,7 @@ chaos_channels = set()
 CHAOS_ON_MESSAGE = uwufy("Giving this channel some nice chaos energy ༼ つ ◕_◕ ༽つ")
 CHAOS_OFF_MESSAGE = uwufy("Chaos energy depleted, chilling for now")
 NO_CHAOS_MESSAGE = uwufy("Gotta ask for that chaos energy first V_V")
+EMBED_FOOTER = uwufy("Sent with ❤️ from UwuBot")
 
 
 @bot.event
@@ -53,8 +54,12 @@ async def on_message(message: Message):
     ):
         author_name = message.author.display_name
         uwufy_message = uwufy(message.content)
+        embed = Embed(title=uwufy_message, colour=Colour(0xFF69B4))
+        embed.set_author(name=display_name, icon_url=message.author.avatar_url)
+        embed.set_footer(text=EMBED_FOOTER)
         await message.delete()
-        await channel.send(f"{author_name}: {uwufy_message}")
+        await channel.send(embed=embed)
+
     else:
         await bot.process_commands(message)
 
