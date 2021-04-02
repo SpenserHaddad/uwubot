@@ -2,6 +2,7 @@ import logging
 from discord import Colour, Embed, Message
 from discord.ext import commands
 from uwufier import uwufy
+from .remove_mentions import remove_mentions
 
 file_handler = logging.FileHandler("uwubot.log")
 stream_handler = logging.StreamHandler()
@@ -53,10 +54,12 @@ async def on_message(message: Message):
         and not message.content.startswith("!unchaos")
     ):
         author_name = message.author.display_name
-        uwufy_message = uwufy(message.content)
-        embed = Embed(colour=Colour(0xFF69B4))
+        message_without_mentions = remove_mentions(
+            message.content, bot, guild=message.guild
+        )
+        uwufy_message = uwufy(message_without_mentions)
+        embed = Embed(title=uwufy_message, colour=Colour(0xFF69B4))
         embed.set_author(name=author_name, icon_url=message.author.avatar_url)
-        embed.add_field(name=uwufy_message, value="\u200b", inline=True)
         embed.set_footer(text=EMBED_FOOTER)
         await message.delete()
         await channel.send(embed=embed)
