@@ -52,11 +52,7 @@ async def on_message(message: Message):
         and not message.content.startswith("!unchaos")
     ):
         uwufy_message = uwufy(message.content)
-        print("Deleting old message:")
-        try:
-            await message.delete()
-        except Exception as e:
-            print(f"Failed to delete message: {e}")
+        await message.delete()
         await channel.send(uwufy_message)
     await bot.process_commands(message)
 
