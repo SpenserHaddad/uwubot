@@ -4,7 +4,7 @@ import re
 
 def remove_mentions(str, bot, guild=None):
     def replace_id_string_with_username(id_string):
-        user = bot.instance.get_user(int(id_string))
+        user = bot.get_user(int(id_string))
         if not user:
             return f"@{id_string}"
         return f"@{user.name}#{user.discriminator}"
@@ -16,7 +16,7 @@ def remove_mentions(str, bot, guild=None):
             return f"@{id_string}"
 
     def replace_id_string_with_channel(id_string):
-        channel = bot.instance.get_channel(int(id_string))
+        channel = bot.get_channel(int(id_string))
         if not channel:
             return f"#{id_string}"
         return f"#{channel.name}"
