@@ -53,7 +53,7 @@ async def on_message(message: Message):
     ):
         uwufy_message = uwufy(message.content)
         await message.delete()
-        await channel.send(uwufy_message)
+        await channel.send(f"{message.user.nick}: {uwufy_message}")
     else:
         await bot.process_commands(message)
 
