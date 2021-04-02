@@ -47,7 +47,7 @@ async def stop_chaos(ctx: commands.Context):
 async def on_message(message: Message):
     channel = message.channel
     if (
-        message.channel in chaos_channels
+        message.channel.id in chaos_channels
         and message.author != bot.user
         and not message.content.startswith("!unchaos")
     ):
