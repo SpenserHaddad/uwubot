@@ -1,4 +1,5 @@
 """Credit: https://github.com/remyjette/DiscordPollBot/blob/a0ee4a61fe2c204e903a84dcfbac772246a607b0/bot/utils.py#L5"""
+import re
 
 
 def remove_mentions(str, bot, guild=None):
