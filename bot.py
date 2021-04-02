@@ -51,9 +51,10 @@ async def on_message(message: Message):
         and message.author != bot.user
         and not message.content.startswith("!unchaos")
     ):
+        author_name = message.author.display_name
         uwufy_message = uwufy(message.content)
         await message.delete()
-        await channel.send(f"{message.author.display_name}: {uwufy_message}")
+        await channel.send(f"{author_name}: {uwufy_message}")
     else:
         await bot.process_commands(message)
 
