@@ -2,7 +2,7 @@ import logging
 from discord import Colour, Embed, Message
 from discord.ext import commands
 from uwufier import uwufy
-from .remove_mentions import remove_mentions
+from uwubot.remove_mentions import remove_mentions
 
 file_handler = logging.FileHandler("uwubot.log")
 stream_handler = logging.StreamHandler()
