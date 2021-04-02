@@ -56,7 +56,7 @@ async def on_message(message: Message):
         uwufy_message = uwufy(message.content)
         embed = Embed(colour=Colour(0xFF69B4))
         embed.set_author(name=author_name, icon_url=message.author.avatar_url)
-        embed.add_field(uwufy_message, None, inline=False)
+        embed.add_field(name=uwufy_message, value=None, inline=False)
         embed.set_footer(text=EMBED_FOOTER)
         await message.delete()
         await channel.send(embed=embed)
