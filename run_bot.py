@@ -1,25 +1,4 @@
-import logging
-from discord.ext import commands
-from uwufier import uwufy
-
-file_handler = logging.FileHandler("uwubot.log")
-stream_handler = logging.StreamHandler()
-logging.basicConfig(handlers=[file_handler, stream_handler])
-
-bot = commands.Bot(command_prefix="!")
-
-
-@bot.event
-async def on_ready():
-    print(f"Bot started as {bot.user}")
-
-
-@bot.command(name="uwu")
-async def uwufy_message(ctx: commands.Context):
-    message = ctx.message.content.replace("!uwu ", "", 1)
-    uwufy_message = uwufy(message)
-    await ctx.reply(uwufy_message)
-
+from uwubot.bot import bot
 
 if __name__ == "__main__":
     import argparse
